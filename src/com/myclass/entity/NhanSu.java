@@ -1,8 +1,8 @@
 package com.myclass.entity;
 
-import com.myclass.access.AccessChucVu;
-import com.myclass.access.AccessPhongBan;
+import com.myclass.array.ArrChucVu;
 import com.myclass.array.ArrPhongBan;
+import com.myclass.array.ArrTaiKhoan;
 import java.util.Scanner;
 
 public class NhanSu {
@@ -19,17 +19,15 @@ public class NhanSu {
     private String maNN;
     private String ngayVaoLam;
     private ArrPhongBan arrPhongBan;
-    private AccessPhongBan accessPhongBan;
-    private AccessChucVu accessChucVu;
-    private Scanner scan;
+    private ArrTaiKhoan arrTaiKhoan;
+    private ArrChucVu arrChucVu;
     
 //    abstract void tinhLuong();
 
     public NhanSu() {
         arrPhongBan = new ArrPhongBan();
-        accessPhongBan = new AccessPhongBan();
-        accessChucVu = new AccessChucVu();
-        scan = new Scanner(System.in);
+        arrTaiKhoan = new ArrTaiKhoan();
+        arrChucVu = new ArrChucVu();
     }
 
     public NhanSu(String maNV, String hoLot, String ten, String gioiTinh, String ngaySinh, String diaChi, String CMND, String maPB, String maCCTH, String maNN, String ngayVaoLam) {
@@ -75,13 +73,15 @@ public class NhanSu {
         System.out.println("Nhập số chứng minh nhân dân:");
         this.CMND = scan.nextLine();
         System.out.println("-----===DANH SÁCH PHÒNG BAN===-----");
-        this.maPB = accessPhongBan.chonPhongBan(scan);
+        this.maPB = arrPhongBan.chonPhongBan(scan);
         System.out.println("Nhập mã chứng chỉ tin học:");
         this.maCCTH = scan.nextLine();
         System.out.println("Nhập mã ngoại ngữ:");
         this.maNN = scan.nextLine();
         System.out.println("Nhập ngày vào làm:");
         this.ngayVaoLam = scan.nextLine();
+        System.out.println("Tạo tài khoản hệ thống:");
+        arrTaiKhoan.themMoi(scan, this.maNV, this.maCV);
     }
     
     public void xuat() {
@@ -91,11 +91,13 @@ public class NhanSu {
         System.out.println("Ngày sinh: " + this.ngaySinh);
         System.out.println("Địa chỉ:" + this.diaChi);
         System.out.println("CMND: " + this.CMND);
-        System.out.println("Phòng ban: " + accessPhongBan.getTenPBTheoId(this.maPB));
-        System.out.println("Chức vụ: " + accessChucVu.getTenCVTheoId(this.maCV));
+        System.out.println("Phòng ban: " + arrPhongBan.getById(this.maPB).getTenPB());
+        System.out.println("Chức vụ: " + arrChucVu.getById(this.maCV).getTenCV());
         System.out.println("Mã chứng chỉ tin học: " + this.maCCTH);
         System.out.println("Mã ngoại ngữ: " + this.maNN);
         System.out.println("Ngày vào làm: " + this.ngayVaoLam);
+        System.out.println("Tài khoản hệ thống: " + arrTaiKhoan.getById(this.maNV).getTaiKhoan());
+        System.out.println("Quyền tài khoản: " + arrTaiKhoan.getById(this.maNV).getQuyen());
     }
 
     public String getMaCV() {
@@ -193,5 +195,5 @@ public class NhanSu {
     public void setMaNN(String maNN) {
         this.maNN = maNN;
     }
-    
+
 }

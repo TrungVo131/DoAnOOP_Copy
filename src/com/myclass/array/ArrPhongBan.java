@@ -1,6 +1,7 @@
 package com.myclass.array;
 
 import com.myclass.entity.PhongBan;
+import java.util.Scanner;
 
 public class ArrPhongBan {
     private final PhongBan[] dsPhongBan;
@@ -24,4 +25,43 @@ public class ArrPhongBan {
         }
     }
     
+    public PhongBan getById(String id) {
+        for(PhongBan pb : dsPhongBan) {
+            if(pb.getMaPB().equals(id))
+                return pb;
+        }
+        
+        return null;
+    }
+    
+        public String chonPhongBan(Scanner scan) {
+        int luaChon;
+        String maPB = null;
+        
+        xuatDsPhongBan();
+        System.out.println("Mời chọn phòng ban:");
+        luaChon = Integer.parseInt(scan.nextLine());
+        
+        switch(luaChon) {
+            case 1:
+                maPB = dsPhongBan[0].getMaPB();
+                break;
+            case 2:
+                maPB = dsPhongBan[1].getMaPB();;
+                break;
+            case 3:
+                maPB = dsPhongBan[2].getMaPB();;
+                break;
+            case 4:
+                maPB = dsPhongBan[3].getMaPB();;
+                break;
+            case 5:
+                maPB = dsPhongBan[4].getMaPB();;
+                break;
+            default:
+                break;
+        }
+        
+        return maPB;
+    }
 }

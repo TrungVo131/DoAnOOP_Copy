@@ -11,6 +11,7 @@ public class Main {
         int luaChon, n = 0;
         do {
             luaChon = menu(scan);
+                    
             switch(luaChon) {
                 case 1:
                     arrNhanSu.taoDanhSach();

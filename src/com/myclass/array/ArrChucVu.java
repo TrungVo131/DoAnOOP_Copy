@@ -16,5 +16,14 @@ public class ArrChucVu {
     public ChucVu[] getDsChucVu() {
         return dsChucVu;
     }
+
+    public ChucVu getById(String maCV) {
+        for(ChucVu cv : dsChucVu) {
+            if(cv.getMaCV().equals(maCV))
+                return cv;
+        }
+        
+        return null;
+    }
     
 }
