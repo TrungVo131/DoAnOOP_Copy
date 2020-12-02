@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        login();
+    }
+    
+    public static void login() {
         Scanner scan = new Scanner(System.in);
         ArrNhanSu arrNhanSu = new ArrNhanSu();
         ArrTaiKhoan arrTaiKhoan = new ArrTaiKhoan();
@@ -27,8 +31,8 @@ public class Main {
         }
         else {
             System.out.println("SAI TÊN ĐĂNG NHẬP HOẶC MẬT KHẨU");
+            login();
         }
-        
     }
     
     public static void loginSuccess(Scanner scan, ArrNhanSu arrNhanSu, String quyenHeThong) {
@@ -57,11 +61,14 @@ public class Main {
                     String delId = scan.nextLine();
                     arrNhanSu.xoaTheoId(delId);
                     break;
+                case 8:
+                    login();
+                    break;
                 default:
                     break;
             }
                     
-        } while(luaChon != 8);
+        } while(luaChon != 9);
     }
     
     public static int menu(Scanner scan) {
@@ -75,7 +82,8 @@ public class Main {
                             "5.Xóa nhân sự theo mã\n" +
                             "6.Tìm kiếm nhiều khóa từ chính xác đến gần đúng\n" +
                             "7.Thống kê số liệu theo nhiều khóa\n" +
-                            "8.Thoát");
+                            "8.Đăng xuất\n" +
+                            "9.Kết thúc chương trình");
         System.out.println("Mời nhập lựa chọn:");
         luaChon = Integer.parseInt(scan.nextLine());
                 

@@ -9,15 +9,15 @@ public class ArrTaiKhoan {
     private int arrLen;
     
     public ArrTaiKhoan() {
-        arrLen = 1;
+        arrLen = 3;
         dsTaiKhoan = new TaiKhoan[arrLen];
         // tao mot tai khoan admin
-        TaiKhoan tk = new TaiKhoan();
-        tk.setMaNV("admin");
-        tk.setTaiKhoan("admin@gmail.com");
-        tk.setMatKhau("123456");
-        tk.setQuyen("Director");
-        dsTaiKhoan[0] = tk;
+        TaiKhoan director = new TaiKhoan("director@gmail.com", "123456", "Director", "giamdoc");
+        dsTaiKhoan[0] = director;
+        TaiKhoan manager = new TaiKhoan("manager@gmail.com", "123456", "Manager", "truongphong");
+        dsTaiKhoan[1] = manager;
+        TaiKhoan staff = new TaiKhoan("staff@gmail.com", "123456", "Staff", "nhanvien");
+        dsTaiKhoan[2] = staff;
     }
     
     public void themMoi(Scanner scan, String maNV, String maCV) {
