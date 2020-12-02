@@ -3,29 +3,23 @@ package com.myclass.entity;
 import java.util.Scanner;
 
 public class NhanVien extends NhanSu {
-    private double luongCoBan;
-    
-    public NhanVien() {
-        this.luongCoBan = 100;
-    }
+    private double phuCap;
     
     @Override
     public void nhap(Scanner scan) {
         super.nhap(scan);
+        System.out.println("Nhập phụ cấp nhân viên:");
+        this.phuCap = Double.parseDouble(scan.nextLine());
     }
     
     @Override
     public void xuat() {
         super.xuat();
-        System.out.println("Lương cơ bản của nhân viên: " + this.luongCoBan);
-    }
-
-    public double getLuongCoBan() {
-        return luongCoBan;
-    }
-
-    public void setLuongCoBan(double luongCoBan) {
-        this.luongCoBan = luongCoBan;
+        System.out.println("Phụ cấp nhân viên: " + this.phuCap);
+        System.out.println("Lương tháng này: " + this.tinhLuong());
     }
     
+    public double tinhLuong() {
+        return this.getSoNgayLamTrongThang() * this.getLuongCoBan() + this.phuCap;
+    }
 }

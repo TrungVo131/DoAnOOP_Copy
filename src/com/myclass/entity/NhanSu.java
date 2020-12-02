@@ -17,12 +17,12 @@ public class NhanSu {
     private String maPB;
     private String maCCTH;
     private String maNN;
-    private String ngayVaoLam;
+    private double soNgayLamTrongThang;
+    private double luongCoBan;
     private ArrPhongBan arrPhongBan;
     private ArrTaiKhoan arrTaiKhoan;
     private ArrChucVu arrChucVu;
     
-//    abstract void tinhLuong();
 
     public NhanSu() {
         arrPhongBan = new ArrPhongBan();
@@ -30,7 +30,7 @@ public class NhanSu {
         arrChucVu = new ArrChucVu();
     }
 
-    public NhanSu(String maNV, String hoLot, String ten, String gioiTinh, String ngaySinh, String diaChi, String CMND, String maPB, String maCCTH, String maNN, String ngayVaoLam) {
+    public NhanSu(String maNV, String hoLot, String ten, String gioiTinh, String ngaySinh, String diaChi, String CMND, String maPB, String maCCTH, String maNN, double soNgayLamTrongThang) {
         this.maNV = maNV;
         this.hoLot = hoLot;
         this.ten = ten;
@@ -41,7 +41,7 @@ public class NhanSu {
         this.maPB = maPB;
         this.maCCTH = maCCTH;
         this.maNN = maNN;
-        this.ngayVaoLam = ngayVaoLam;
+        this.soNgayLamTrongThang = soNgayLamTrongThang;
     }
     
     public void nhap(Scanner scan) {
@@ -78,9 +78,12 @@ public class NhanSu {
         this.maCCTH = scan.nextLine();
         System.out.println("Nhập mã ngoại ngữ:");
         this.maNN = scan.nextLine();
-        System.out.println("Nhập ngày vào làm:");
-        this.ngayVaoLam = scan.nextLine();
+        System.out.println("Nhập số ngày làm trong tháng này:");
+        this.soNgayLamTrongThang = Double.parseDouble(scan.nextLine());
+        System.out.println("Nhập lương cơ bản:");
+        this.luongCoBan = Double.parseDouble(scan.nextLine());
         System.out.println("Tạo tài khoản hệ thống:");
+        System.out.println(this.maNV + " - " + this.maCV);
         arrTaiKhoan.themMoi(scan, this.maNV, this.maCV);
     }
     
@@ -95,7 +98,8 @@ public class NhanSu {
         System.out.println("Chức vụ: " + arrChucVu.getById(this.maCV).getTenCV());
         System.out.println("Mã chứng chỉ tin học: " + this.maCCTH);
         System.out.println("Mã ngoại ngữ: " + this.maNN);
-        System.out.println("Ngày vào làm: " + this.ngayVaoLam);
+        System.out.println("Số ngày làm trong tháng: " + this.soNgayLamTrongThang);
+        System.out.println("Lương cơ bản:" + this.luongCoBan);
         System.out.println("Tài khoản hệ thống: " + arrTaiKhoan.getById(this.maNV).getTaiKhoan());
         System.out.println("Quyền tài khoản: " + arrTaiKhoan.getById(this.maNV).getQuyen());
     }
@@ -180,12 +184,12 @@ public class NhanSu {
         this.maCCTH = maCCTH;
     }
 
-    public String getNgayVaoLam() {
-        return ngayVaoLam;
+    public double getSoNgayLamTrongThang() {
+        return soNgayLamTrongThang;
     }
 
-    public void setNgayVaoLam(String ngayVaoLam) {
-        this.ngayVaoLam = ngayVaoLam;
+    public void setSoNgayLamTrongThang(double soNgayLamTrongThang) {
+        this.soNgayLamTrongThang = soNgayLamTrongThang;
     }
 
     public String getMaNN() {
@@ -196,4 +200,12 @@ public class NhanSu {
         this.maNN = maNN;
     }
 
+    public double getLuongCoBan() {
+        return luongCoBan;
+    }
+
+    public void setLuongCoBan(double luongCoBan) {
+        this.luongCoBan = luongCoBan;
+    }
+    
 }

@@ -1,6 +1,8 @@
 package com.myclass.main;
 
 import com.myclass.array.ArrNhanSu;
+import com.myclass.array.ArrTaiKhoan;
+import com.myclass.entity.TaiKhoan;
 import java.util.Scanner;
 
 
@@ -8,6 +10,28 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         ArrNhanSu arrNhanSu = new ArrNhanSu();
+        ArrTaiKhoan arrTaiKhoan = new ArrTaiKhoan();
+        String taiKhoan, matKhau;
+
+        System.out.println("ĐĂNG NHẬP HỆ THỐNG");
+        System.out.print("Tài khoản: ");
+        taiKhoan = scan.nextLine();
+        System.out.print("Mật khẩu: ");
+        matKhau = scan.nextLine();
+        
+        TaiKhoan taiKhoanDangNhap = kiemTraDangNhap(arrTaiKhoan, taiKhoan, matKhau);
+        
+        if(taiKhoanDangNhap != null) {
+            System.out.println("ĐĂNG NHẬP THÀNH CÔNG");
+            loginSuccess(scan, arrNhanSu, taiKhoanDangNhap.getQuyen());
+        }
+        else {
+            System.out.println("SAI TÊN ĐĂNG NHẬP HOẶC MẬT KHẨU");
+        }
+        
+    }
+    
+    public static void loginSuccess(Scanner scan, ArrNhanSu arrNhanSu, String quyenHeThong) {
         int luaChon, n = 0;
         do {
             luaChon = menu(scan);
@@ -57,4 +81,14 @@ public class Main {
                 
         return luaChon;
     }
+    
+    public static TaiKhoan kiemTraDangNhap(ArrTaiKhoan arrTaiKhoan, String taiKhoan, String matKhau) {
+        for(TaiKhoan tk : arrTaiKhoan.getDsTaiKhoan()) {
+            if(tk.getTaiKhoan().equals(taiKhoan) || tk.getMatKhau().equals(matKhau))
+                return tk;
+        }
+        
+        return null;
+    }
+    
 }
