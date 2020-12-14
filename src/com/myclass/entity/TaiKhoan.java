@@ -1,10 +1,12 @@
 package com.myclass.entity;
 
-public class TaiKhoan {
+import java.io.Serializable;
+
+public class TaiKhoan implements Serializable {
     private String taiKhoan;
     private String matKhau;
     private String quyen;   
-    private String maNV;
+    private String maNS;
     
     public TaiKhoan() {}
     
@@ -12,7 +14,18 @@ public class TaiKhoan {
         this.taiKhoan = taiKhoan;
         this.matKhau = matKhau;
         this.quyen = quyen;
-        this.maNV = maNV;
+        this.maNS = maNV;
+    }
+    
+    public void xuat() {
+        System.out.println("Tên tài khoản: " + this.taiKhoan);
+        System.out.println("Mật khẩu: " + this.matKhau);
+        System.out.println("Quyền tài khoản: " + this.quyen);
+    }
+
+    @Override
+    public String toString() {
+        return "TaiKhoan{" + "taiKhoan=" + taiKhoan + ", matKhau=" + matKhau + ", quyen=" + quyen + ", maNV=" + maNS + "}\n";
     }
 
     public String getTaiKhoan() {
@@ -39,12 +52,12 @@ public class TaiKhoan {
         this.quyen = quyen;
     }
 
-    public String getMaNV() {
-        return maNV;
+    public String getMaNS() {
+        return maNS;
     }
 
-    public void setMaNV(String maNV) {
-        this.maNV = maNV;
+    public void setMaNS(String maNS) {
+        this.maNS = maNS;
     }
     
 }

@@ -1,6 +1,8 @@
 package com.myclass.entity;
 
-public class ChucVu {
+import java.io.Serializable;
+
+public class ChucVu implements Serializable {
     private String maCV;
     private String tenCV;
     
@@ -11,6 +13,18 @@ public class ChucVu {
         this.tenCV = tenCV;
     }
 
+    public void xuatThongTinChucVu() {
+        System.out.printf("%-15s%-25s%s", 
+                "|" + this.maCV,
+                "|" + this.tenCV,
+                "|\n");
+    }
+
+    @Override
+    public String toString() {
+        return "ChucVu{" + "maCV=" + maCV + ", tenCV=" + tenCV + "}\n";
+    }
+    
     public String getMaCV() {
         return maCV;
     }
@@ -26,6 +40,4 @@ public class ChucVu {
     public void setTenCV(String tenCV) {
         this.tenCV = tenCV;
     }
-    
-    
 }
